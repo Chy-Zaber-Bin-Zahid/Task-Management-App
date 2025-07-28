@@ -1,6 +1,10 @@
+import RegisterForum from "../components/RegisterForum"
+
 function RegisterPage() {
   return (
-    <div>RegisterPage</div>
+    <div>
+       <RegisterForum/>
+    </div>
   )
 }
 

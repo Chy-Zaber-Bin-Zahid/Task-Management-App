@@ -1,6 +1,10 @@
+import LoginForum from "../components/LoginForum"
+
 function LoginPage() {
   return (
-    <div>LoginPage</div>
+    <div>
+      <LoginForum/>
+    </div>
   )
 }
 

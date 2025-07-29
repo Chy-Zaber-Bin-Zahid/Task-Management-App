@@ -1,5 +1,10 @@
 import axios from 'axios';
 
+const excludedRoutes = [
+  '/auth/login',
+  '/auth/register',
+];
+
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
@@ -10,8 +15,14 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   config => {
     const token = localStorage.getItem('token');
-    if (token && config.headers) {
-      config.headers.Authorization = `Bearer ${token}`;
+    if (token && config.headers && config.url) {
+      const path = config.url.toLowerCase();
+
+      const isExcluded = excludedRoutes.some(route => path.startsWith(route.toLowerCase()));
+
+      if (!isExcluded) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },

@@ -1,1 +1,1 @@
-export const PG_CONNECTION = 'PG_CONNECTION' as const;
+export const PG_CONNECTION = 'PG_CONNECTION';

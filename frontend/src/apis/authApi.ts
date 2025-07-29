@@ -7,7 +7,7 @@ export async function login(
 ): Promise<AuthResponse> {
   try {
     const { data } = await axiosInstance.post<AuthResponse>('/auth/login', payload);
-    localStorage.setItem('token', data.token);
+    localStorage.setItem('token', data.access_token);
     return data;
   } catch (error) {
     console.error('Login failed:', error);
@@ -21,7 +21,6 @@ export async function register(
 ): Promise<AuthResponse> {
   try {
     const { data } = await axiosInstance.post<AuthResponse>('/auth/register', payload);
-    localStorage.setItem('token', data.token);
     return data;
   } catch (error) {
     console.error('Registration failed:', error);

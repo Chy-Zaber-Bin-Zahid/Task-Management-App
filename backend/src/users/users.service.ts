@@ -37,7 +37,7 @@ export class UsersService {
   async findOne(loginUserDto: LoginUserDto): Promise<FindOne | null> {
     try {
       const user = await this.userRepo.findOne({
-        where: { name: loginUserDto.name },
+        where: { email: loginUserDto.email },
       });
 
       if (!user) return null;
